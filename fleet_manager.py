@@ -40,6 +40,9 @@ def display_menu():
         elif choice == "6":
             filter_by_division(names, divs)
 
+        elif choice == "7":
+            calculate_payroll(ranks)
+
         elif choice == "9":
             print("\nThank you for using Fleet Manager, Goodbye.")
             break
@@ -154,6 +157,21 @@ def filter_by_division(names, divs):
         
     if not found:
         print("There are no crew members found in", division)
+        
+def calculate_payroll(ranks):
+    print("\nCalculating Payroll...")
+
+    rank_payroll = [2000, 1800, 1600, 1400, 1200, 1000, 900, 800, 700, 600, 200]
             
+    total_payroll = 0
+    for rank in ranks:
+        for i in range(len(valid_ranks)):
+            if rank == valid_ranks[i]:
+                total_payroll += rank_payroll[i]
+                break
+
+    print("The Total Payroll for the Crew is", total_payroll, "credits.")
+
+
 
 main()
