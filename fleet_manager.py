@@ -7,7 +7,7 @@ def main():
 def init_database():
     names = ["Picard", "Riker", "Data", "Worf", "Kirk"]
     ranks = ["Captain", "Commander", "Lt. Commander", "Lieutenant", "Captain"]
-    divs = ["Command", "Command", "Operations", "Security", "Command"]
+    divs = ["Command", "Command", "Operations", "Security", "Sciences"]
     ids = ["SP-937-215", "SC-231-427", "SR-234-248", "SX-987-356", "SS-123-456"]
     
     return names, ranks, divs, ids
@@ -36,6 +36,9 @@ def display_menu():
 
         elif choice == "5":
             search_crew(names, ranks, divs, ids)
+
+        elif choice == "6":
+            filter_by_division(names, divs)
 
         elif choice == "9":
             print("\nThank you for using Fleet Manager, Goodbye.")
@@ -138,6 +141,19 @@ def search_crew(names, ranks, divs, ids):
     if not found:
         print("Someone with that name is not in the Crew...")
 
+def filter_by_division(names, divs):
+    print("\nFiltering Crew by Division...")
 
+    division = input("Enter a division from either Command, Operations or Sciences: ").strip().title()
+    found = False
+
+    for i in range(len(divs)):
+        if divs[i] == division:
+            print(names[i], "is in", divs[i])
+            found = True
+        
+    if not found:
+        print("There are no crew members found in", division)
+            
 
 main()
