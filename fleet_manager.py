@@ -1,3 +1,5 @@
+valid_ranks = ["Fleet Admiral", "Admiral", "Vice Admiral", "Rear Admiral", "Commodore", "Captain", "Commander", "Lt. Commander", "Lieutenant", "Lieutenant Junior", "Ensign"]
+
 def main():
     print("Welcome to Fleet Manager.")
     display_menu()
@@ -6,7 +8,7 @@ def init_database():
     names = ["Picard", "Riker", "Data", "Worf", "Kirk"]
     ranks = ["Captain", "Commander", "Lt. Commander", "Lieutenant", "Captain"]
     divs = ["Command", "Command", "Operations", "Security", "Command"]
-    ids = ["SP-937-215", "SC-231-427", "NFN NMI Data", "Son of Mogh", "SC 937-0176 CEC"]
+    ids = ["SP-937-215", "SC-231-427", "SR-234-248", "SX-987-356", "SS-123-456"]
     
     return names, ranks, divs, ids
 
@@ -29,6 +31,9 @@ def display_menu():
         elif choice == "3":
             remove_member(names, ranks, divs, ids)
 
+        elif choice == "4":
+            update_rank(names, ranks, ids)
+
         elif choice == "9":
             print("\nThank you for using Fleet Manager, Goodbye.")
             break
@@ -43,8 +48,6 @@ def display_roster(names, ranks, divs, ids):
     
 
 def add_members(names, ranks, divs, ids):
-    valid_ranks = ["Fleet Admiral", "Admiral", "Vice Admiral", "Rear Admiral", "Commodore", "Captain", "Commander", "Lt. Commander", "Lieutenant", "Lieutenant Junior", "Ensign"]
-
     print("\nAdding New Crew Member...")
     new_name = input("Enter Full Name: ").strip().title()
 
@@ -76,7 +79,7 @@ def remove_member(names, ranks, divs, ids):
     print("\nRemoving Member...")
 
     while True:
-        remove_id = input("Enter the ID of the Member who will be removed: ").strip()
+        remove_id = input("Enter the ID of the Member who will be removed: ").strip().upper()
         if remove_id in ids:
             removeIndex = ids.index(remove_id)
             removed_name = names[removeIndex]
@@ -91,6 +94,28 @@ def remove_member(names, ranks, divs, ids):
 
         else:
             print("This member does not exist. Please Re-enter.")
-            
+
+def update_rank(names, ranks, ids):
+    print("\nUpdating Rank...")
+
+    while True:
+        update_id = input("Enter the ID of the Member who's Rank will be changed: ").strip().upper()
+        if update_id in ids:
+            update_index = ids.index(update_id)
+            print("The Current Rank of", names[update_index], "is", ranks[update_index])
+
+            while True:
+                new_rank = input("Enter the new rank: ").strip().title()
+                if new_rank not in valid_ranks:
+                    print("Invalid rank. Please re-enter.")
+
+                else:
+                    ranks[update_index] = new_rank
+                    print(names[update_index], "is now a", new_rank)
+                    return
+
+        else:
+            print("Invalid ID, Please Re-enter.")
     
+
 main()
