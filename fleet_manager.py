@@ -26,12 +26,15 @@ def display_menu():
         elif choice == "2":
             add_members(names, ranks, divs, ids)
 
+        elif choice == "3":
+            remove_member(names, ranks, divs, ids)
+
         elif choice == "9":
-            print("\n Thank you for using Fleet Manager, Goodbye.")
+            print("\nThank you for using Fleet Manager, Goodbye.")
             break
         
         else:
-            print("\n Invalid Option.")
+            print("\nInvalid Option.")
 
 def display_roster(names, ranks, divs, ids):
     print("\nDisplaying Roster...")
@@ -69,4 +72,25 @@ def add_members(names, ranks, divs, ids):
     print(new_name, "has become a new Member.")
 
 
+def remove_member(names, ranks, divs, ids):
+    print("\nRemoving Member...")
+
+    while True:
+        remove_id = input("Enter the ID of the Member who will be removed: ").strip()
+        if remove_id in ids:
+            removeIndex = ids.index(remove_id)
+            removed_name = names[removeIndex]
+
+            names.pop(removeIndex)
+            ranks.pop(removeIndex)
+            divs.pop(removeIndex)
+            ids.pop(removeIndex)
+
+            print(removed_name, "has been kicked from the Crew.")
+            break
+
+        else:
+            print("This member does not exist. Please Re-enter.")
+            
+    
 main()
