@@ -43,6 +43,9 @@ def display_menu():
         elif choice == "7":
             calculate_payroll(ranks)
 
+        elif choice == "8":
+            count_officers(ranks)
+
         elif choice == "9":
             print("\nThank you for using Fleet Manager, Goodbye.")
             break
@@ -167,11 +170,19 @@ def calculate_payroll(ranks):
     for rank in ranks:
         for i in range(len(valid_ranks)):
             if rank == valid_ranks[i]:
-                total_payroll += rank_payroll[i]
+                total_payroll = total_payroll + rank_payroll[i]
                 break
 
     print("The Total Payroll for the Crew is", total_payroll, "credits.")
 
+def count_officers(ranks):
+    print("\nCounting Officers...")
+
+    count = 0
+    for count_rank in ranks:
+        if count_rank == "Captain" or count_rank == "Commander":
+            count = count + 1
+    print("There are a total of", count, "Captains and Commanders Total.")
 
 
 main()
