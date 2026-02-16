@@ -14,9 +14,7 @@ def run_system_monolith():
     while loading < 5:
         print("Loading module " + str(loading))
         loading = loading + 1
-        
-    fuel = 100
-    consumption = 10
+
 
     while True:
         print("\n--- MENU ---")
@@ -87,6 +85,9 @@ def run_system_monolith():
         else:
             print("Database empty.")
 
+        fuel = 100
+        consumption = 10
+        
         while fuel > 0:
             print("Idling...")
             fuel = fuel - consumption
