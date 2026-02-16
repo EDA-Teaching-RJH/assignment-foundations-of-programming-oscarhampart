@@ -34,6 +34,9 @@ def display_menu():
         elif choice == "4":
             update_rank(names, ranks, ids)
 
+        elif choice == "5":
+            search_crew(names, ranks, divs, ids)
+
         elif choice == "9":
             print("\nThank you for using Fleet Manager, Goodbye.")
             break
@@ -117,5 +120,22 @@ def update_rank(names, ranks, ids):
         else:
             print("Invalid ID, Please Re-enter.")
     
+def search_crew(names, ranks, divs, ids):
+    print("\nSearching Crew...")
+
+    term = input("Enter the name of who to search for: ").strip().upper()
+    found = False
+
+    for i in range(len(names)):
+        if term in names[i].upper():
+            print("Member has been found:")
+            print(names[i], " - ", ranks[i], " - ", divs[i], " - ", ids [i])
+            found = True
+            break
+
+    if not found:
+        print("Someone with that name is not in the Crew...")
+
+
 
 main()
