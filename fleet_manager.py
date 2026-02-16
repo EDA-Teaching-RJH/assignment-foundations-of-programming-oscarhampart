@@ -46,8 +46,10 @@ def display_menu():
 
 def display_roster(names, ranks, divs, ids):
     print("\nDisplaying Roster...")
+    print(f"{"Name":<20} | {"Rank":<20} | {"Division":<20} | {"ID":<20}")
+    print("-" * 80)  
     for i in range(len(names)):
-        print(names[i], " - ", ranks[i], " - ", divs[i], " - ", ids [i])
+        print(f"{names[i]:<20} | {ranks[i]:<20} | {divs[i]:<20} | {ids[i]:<20}")
     
 
 def add_members(names, ranks, divs, ids):
