@@ -20,7 +20,10 @@ def display_menu():
         print("\n == Fleet Manager Menu == \n 1. Display Roster \n 2. Add Member \n 3. Remove Member \n 4. Update Rank \n 5. Search Crew \n 6. Filter by Division \n 7. Calculate Payroll \n 8. Count Officers \n 9. Exit")
         choice = input("Select an option: ")
 
-        if choice == "2":
+        if choice == "1":
+            display_roster(names, ranks, divs, ids)
+
+        elif choice == "2":
             add_members(names, ranks, divs, ids)
 
         elif choice == "9":
@@ -29,6 +32,12 @@ def display_menu():
         
         else:
             print("\n Invalid Option.")
+
+def display_roster(names, ranks, divs, ids):
+    print("\nDisplaying Roster...")
+    for i in range(len(names)):
+        print(names[i], " - ", ranks[i], " - ", divs[i], " - ", ids [i])
+    
 
 def add_members(names, ranks, divs, ids):
     valid_ranks = ["Fleet Admiral", "Admiral", "Vice Admiral", "Rear Admiral", "Commodore", "Captain", "Commander", "Lt. Commander", "Lieutenant", "Lieutenant Junior", "Ensign"]
